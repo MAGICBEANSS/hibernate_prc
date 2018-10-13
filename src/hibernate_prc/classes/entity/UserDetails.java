@@ -1,8 +1,14 @@
 package hibernate_prc.classes.entity;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -31,7 +37,36 @@ public class UserDetails {
 		this.city = city;
 	}
 
+	Set<Address2> hsadd = new HashSet<>();
+	Map<Integer,Address3> hsmap = new HashMap<>();
 	
+@ElementCollection
+@AttributeOverrides({
+	@AttributeOverride(name = "zipcode" , column = @Column(name = "ziiiiipcode"))
+})
+
+	public Map<Integer, Address3> getHsmap() {
+		return hsmap;
+	}
+	public void setHsmap(Map<Integer, Address3> hsmap) {
+		this.hsmap = hsmap;
+	}
+	@AttributeOverrides({
+		
+		@AttributeOverride(name = "city" , column = @Column(name = "citybity"))
+	})
+	@ElementCollection()
+	public Set<Address2> getHsadd() {
+		return hsadd;
+	}
+	public void setHsadd(Set<Address2> hsadd) {
+		this.hsadd = hsadd;
+	}
+	
+	
+
+
+
 	Address add;
 //	Address2 add2;
 	
@@ -43,7 +78,7 @@ public class UserDetails {
 	}*/
 	@AttributeOverrides(
 			{
-			@AttributeOverride(name = "city", column = @Column( name = "citi"))
+			@AttributeOverride(name = "city", column = @Column( name = "cityyy"))
 			}
 			)
 	public Address getAdd() {

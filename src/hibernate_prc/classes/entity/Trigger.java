@@ -2,7 +2,11 @@ package hibernate_prc.classes.entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import org.hibernate.Session;
@@ -23,6 +27,14 @@ public class Trigger {
 		a.setCity("Bangalore");
 		a.setPincode(123456);
 		u.setAdd(a);
+		Set<Address2> hsadd = new HashSet<>();
+		Map<Integer,Address3> hsmap = new HashMap<>();
+		hsadd.add(new Address2().setCity("aaaaa"));
+		hsadd.add(new Address2().setCity("bbbbb"));
+		hsmap.put(1, new Address3().setZipcode(1234));
+		hsmap.put(1, new Address3().setZipcode(45435));
+		u.setHsadd(hsadd);
+		u.setHsmap(hsmap);
 		System.out.println("dxxxxxx\n\n\n\n");
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		System.out.println("ggggggggggggggggg\n\n\n\n");

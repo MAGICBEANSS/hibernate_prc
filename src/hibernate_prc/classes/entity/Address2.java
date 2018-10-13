@@ -11,8 +11,9 @@ public class Address2 {
 		return city;
 	}
 
-	public void setCity(String city) {
+	public Address2 setCity(String city) {
 		this.city = city;
+		return this;
 	}
 	
 }
