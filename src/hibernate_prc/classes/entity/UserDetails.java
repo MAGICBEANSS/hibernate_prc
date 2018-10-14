@@ -59,7 +59,7 @@ public class UserDetails {
 
 	Set<Address> add = new HashSet<>();
 
-	@ManyToMany(cascade = CascadeType.ALL )
+	@ManyToMany(cascade = CascadeType.ALL ,mappedBy = "user")
 
 	public Set<Address> getAdd() {
 		return add;
