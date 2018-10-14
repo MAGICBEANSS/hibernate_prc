@@ -35,7 +35,8 @@ public class Trigger {
 		System.out.println("______c_____________");
 	u.getAdd().add(a2);
 	
-		a.setUser(u);
+		a.getUser().add(u);
+		a2.getUser().add(u);
 		Address a3 = new Address();
 		a3.setCity("Ejipura");
 		

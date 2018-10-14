@@ -1,11 +1,15 @@
 package hibernate_prc.classes.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.annotation.Generated;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ManyToAny;
@@ -17,15 +21,15 @@ public class Address {
 	String city;
 	Integer pincode;
 	
-	@ManyToOne
-	@JoinColumn(name = "oooo")
-	UserDetails user;
+	@ManyToMany
+	Set<UserDetails> user = new HashSet<>();
 	
 	
-	public UserDetails getUser() {
+	
+	public Set<UserDetails> getUser() {
 		return user;
 	}
-	public void setUser(UserDetails user) {
+	public void setUser(Set<UserDetails> user) {
 		this.user = user;
 	}
 	public String getCity() {

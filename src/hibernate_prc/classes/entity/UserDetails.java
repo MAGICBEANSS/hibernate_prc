@@ -15,8 +15,11 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 public class UserDetails {
@@ -55,12 +58,8 @@ public class UserDetails {
 	
 
 	Set<Address> add = new HashSet<>();
-	@JoinTable(name="id_map_table",
-			joinColumns = {@JoinColumn(name = "u_id" , referencedColumnName = "User_id")},
-			inverseJoinColumns = {@JoinColumn(name = "a_id" , referencedColumnName = "addressId")}
-			
-			)
-	@OneToMany(cascade = CascadeType.ALL)
+
+	@ManyToMany(cascade = CascadeType.ALL )
 
 	public Set<Address> getAdd() {
 		return add;
