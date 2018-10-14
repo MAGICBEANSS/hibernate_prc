@@ -15,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -53,13 +54,18 @@ public class UserDetails {
 	}
 	
 
-	Address add;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "add_id_")
-	public Address getAdd() {
+	Set<Address> add = new HashSet<>();
+	@JoinTable(name="id_map_table",
+			joinColumns = {@JoinColumn(name = "u_id" , referencedColumnName = "User_id")},
+			inverseJoinColumns = {@JoinColumn(name = "a_id" , referencedColumnName = "addressId")}
+			
+			)
+	@OneToMany(cascade = CascadeType.ALL)
+
+	public Set<Address> getAdd() {
 		return add;
 	}
-	public void setAdd(Address add) {
+	public void setAdd(Set<Address> add) {
 		this.add = add;
 	}
 	@Override

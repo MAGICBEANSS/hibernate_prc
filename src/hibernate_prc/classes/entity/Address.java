@@ -5,6 +5,10 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 public class Address {
@@ -12,6 +16,18 @@ public class Address {
 	Integer addressId;
 	String city;
 	Integer pincode;
+	
+	@ManyToOne
+	@JoinColumn(name = "oooo")
+	UserDetails user;
+	
+	
+	public UserDetails getUser() {
+		return user;
+	}
+	public void setUser(UserDetails user) {
+		this.user = user;
+	}
 	public String getCity() {
 		return city;
 	}
