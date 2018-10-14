@@ -1,16 +1,24 @@
 package hibernate_prc.classes.entity;
 
-public class Address3 {
+import javax.persistence.Embeddable;
 
-	Integer zipcode;
-
-	public Integer getZipcode() {
-		return zipcode;
-	}
-
-	public Address3 setZipcode(Integer zipcode) {
-		this.zipcode = zipcode;
-		return this;
+	@Embeddable
+	public class Address3 {
 	
-}
-}
+		@Override
+		public String toString() {
+			return "Address3 [zipcode=" + zipcode + "]";
+		}
+
+		Integer zipcode;
+	
+		public Integer getZipcode() {
+			return zipcode;
+		}
+	
+		public Address3 setZipcode(Integer zipcode) {
+			this.zipcode = zipcode;
+			return this;
+		
+	}
+	}

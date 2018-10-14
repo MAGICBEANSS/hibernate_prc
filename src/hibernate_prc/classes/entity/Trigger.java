@@ -27,14 +27,7 @@ public class Trigger {
 		a.setCity("Bangalore");
 		a.setPincode(123456);
 		u.setAdd(a);
-		Set<Address2> hsadd = new HashSet<>();
-		Map<Integer,Address3> hsmap = new HashMap<>();
-		hsadd.add(new Address2().setCity("aaaaa"));
-		hsadd.add(new Address2().setCity("bbbbb"));
-		hsmap.put(1, new Address3().setZipcode(1234));
-		hsmap.put(1, new Address3().setZipcode(45435));
-		u.setHsadd(hsadd);
-		u.setHsmap(hsmap);
+	
 		System.out.println("dxxxxxx\n\n\n\n");
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		System.out.println("ggggggggggggggggg\n\n\n\n");
@@ -43,17 +36,12 @@ public class Trigger {
 		ss.beginTransaction();
 		System.out.println("dddddddd\n\n\n\n");
 		ss.save(u);
-		ss.getTransaction().commit();
-		ss.close();
-		ss = sf.getCurrentSession();
-		ss.beginTransaction();
-		UserDetails u1 = ss.get(UserDetails.class, 1);
-		System.out.println(" u1 "+u1.getUserName());
-		System.out.println(" u1 "+u1);
 		
+	
 		ss.getTransaction().commit();
 	//	new Trigger().m1();
-
+		ss.close();
+		sf.close();
 	}
 	
 	void m1() {

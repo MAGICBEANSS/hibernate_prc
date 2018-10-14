@@ -1,10 +1,15 @@
 package hibernate_prc.classes.entity;
 
+import javax.annotation.Generated;
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Embeddable
+@Entity
 public class Address {
-
+	@Id @GeneratedValue
+	Integer addressId;
 	String city;
 	Integer pincode;
 	public String getCity() {
@@ -18,6 +23,10 @@ public class Address {
 	}
 	public void setPincode(Integer pincode) {
 		this.pincode = pincode;
+	}
+	@Override
+	public String toString() {
+		return "Address111 [city=" + city + ", pincode=" + pincode + "]";
 	}
 	
 }

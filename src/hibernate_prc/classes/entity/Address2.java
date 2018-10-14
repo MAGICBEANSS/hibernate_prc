@@ -11,6 +11,11 @@ public class Address2 {
 		return city;
 	}
 
+	@Override
+	public String toString() {
+		return "Address2 [city=" + city + "]";
+	}
+
 	public Address2 setCity(String city) {
 		this.city = city;
 		return this;

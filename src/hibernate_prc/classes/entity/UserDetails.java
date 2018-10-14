@@ -7,19 +7,24 @@ import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 
 @Entity
 public class UserDetails {
 	
-	@Column()
+
 	int userId;
-	String userName;
 
 	@Id
+	@Column(name = "User_id")
 	public int getUserId() {
 		return userId;
 	}
@@ -37,56 +42,7 @@ public class UserDetails {
 		this.city = city;
 	}
 
-	Set<Address2> hsadd = new HashSet<>();
-	Map<Integer,Address3> hsmap = new HashMap<>();
-	
-@ElementCollection
-@AttributeOverrides({
-	@AttributeOverride(name = "zipcode" , column = @Column(name = "ziiiiipcode"))
-})
-
-	public Map<Integer, Address3> getHsmap() {
-		return hsmap;
-	}
-	public void setHsmap(Map<Integer, Address3> hsmap) {
-		this.hsmap = hsmap;
-	}
-	@AttributeOverrides({
-		
-		@AttributeOverride(name = "city" , column = @Column(name = "citybity"))
-	})
-	@ElementCollection()
-	public Set<Address2> getHsadd() {
-		return hsadd;
-	}
-	public void setHsadd(Set<Address2> hsadd) {
-		this.hsadd = hsadd;
-	}
-	
-	
-
-
-
-	Address add;
-//	Address2 add2;
-	
-	/*public Address2 getAdd2() {
-		return add2;
-	}
-	public void setAdd2(Address2 add2) {
-		this.add2 = add2;
-	}*/
-	@AttributeOverrides(
-			{
-			@AttributeOverride(name = "city", column = @Column( name = "cityyy"))
-			}
-			)
-	public Address getAdd() {
-		return add;
-	}
-	public void setAdd(Address add) {
-		this.add = add;
-	}
+	String userName;	
 	@Column()
 	public String getUserName() {
 		
@@ -95,9 +51,21 @@ public class UserDetails {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+
+	Address add;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "add_id_")
+	public Address getAdd() {
+		return add;
+	}
+	public void setAdd(Address add) {
+		this.add = add;
+	}
 	@Override
 	public String toString() {
-		return "UserDetails [userId=" + userId + ", userName=" + userName + "]";
+		return "UserDetails [userId=" + userId + ", city=" + city + ", userName=" + userName + ", add=" + add + "]";
 	}
+	
 
 }
