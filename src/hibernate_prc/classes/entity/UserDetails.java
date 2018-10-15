@@ -1,7 +1,9 @@
 package hibernate_prc.classes.entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,7 +23,7 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ManyToAny;
 
-@Entity
+@Entity()
 public class UserDetails {
 	
 
@@ -35,9 +37,35 @@ public class UserDetails {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
+	Address aa;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	public Address getAa() {
+		return aa;
+	}
+	public void setAa(Address aa) {
+		this.aa = aa;
+	}
+
 	
 	
+	
+	
+	List<Address> add = new ArrayList<>();
+	
+	
+	
+	@OneToMany()	
+	public List<Address> getAdd() {
+		return add;
+	}
+	public void setAdd(List<Address> add) {
+		this.add = add;
+	}
+
 	String city;
+	
 	@Column(name = "citi")
 	public String getCity() {
 		return city;
@@ -55,22 +83,13 @@ public class UserDetails {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
-
-	Set<Address> add = new HashSet<>();
-
-	@ManyToMany(cascade = CascadeType.ALL ,mappedBy = "user")
-
-	public Set<Address> getAdd() {
-		return add;
-	}
-	public void setAdd(Set<Address> add) {
-		this.add = add;
-	}
 	@Override
 	public String toString() {
-		return "UserDetails [userId=" + userId + ", city=" + city + ", userName=" + userName + ", add=" + add + "]";
+		return "UserDetails [userId=" + userId + ", add=" + add + ", city=" + city + ", userName=" + userName + "]";
 	}
+	
+
+	
 	
 
 }

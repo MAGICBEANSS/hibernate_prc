@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.annotation.Generated;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -20,18 +21,16 @@ public class Address {
 	Integer addressId;
 	String city;
 	Integer pincode;
-	
-	@ManyToMany
-	Set<UserDetails> user = new HashSet<>();
-	
-	
-	
-	public Set<UserDetails> getUser() {
+
+	/*@ManyToOne(fetch= FetchType.LAZY)
+	UserDetails user;
+
+	public UserDetails getUser() {
 		return user;
 	}
-	public void setUser(Set<UserDetails> user) {
+	public void setUser(UserDetails user) {
 		this.user = user;
-	}
+	}*/
 	public String getCity() {
 		return city;
 	}

@@ -54,6 +54,7 @@
         
         <mapping class="hibernate_prc.classes.entity.UserDetails"/>
         <mapping class="hibernate_prc.classes.entity.Address"/>
+        <mapping class="hibernate_prc.classes.entity.Parent"/>
     </session-factory>
  
 </hibernate-configuration>
